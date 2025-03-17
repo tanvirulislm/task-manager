@@ -168,7 +168,8 @@ class TaskResource extends Resource
                 ->action(fn (Task $record) => $record->update(['is_completed' => true, 'status' => 'completed', 'completed_at' => now(),]))
                 ->visible(fn (Task $record) => !$record->is_completed),
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->modal(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
